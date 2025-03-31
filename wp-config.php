@@ -10,6 +10,7 @@
  *
  * * Database settings
  * * Secret keys
+ * 
  * * Database table prefix
  * * ABSPATH
  *

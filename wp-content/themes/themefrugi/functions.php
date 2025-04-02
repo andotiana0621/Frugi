@@ -79,6 +79,53 @@ function themefrugi_enqueue_assets() {
   wp_enqueue_script('bootstrap-js', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js', [], null, true);
 }
 add_action('wp_enqueue_scripts', 'themefrugi_enqueue_assets');
+//ajout section mission
+function themefrugi_section_mission($wp_customize) {
+  $wp_customize->add_section('section_mission', [
+    'title' => 'Section Notre Mission',
+    'priority' => 40,
+  ]);
+
+  // Titre
+  $wp_customize->add_setting('mission_titre', [
+    'default' => 'NOTRE MISSION : REINVENTER LE FRUIT',
+    'transport' => 'refresh',
+  ]);
+  $wp_customize->add_control('mission_titre', [
+    'label' => 'Titre',
+    'section' => 'section_mission',
+    'type' => 'text',
+  ]);
+
+  // Texte
+  $wp_customize->add_setting('mission_texte', [
+    'default' => 'Depuis sa création en 1972...',
+    'transport' => 'refresh',
+  ]);
+  $wp_customize->add_control('mission_texte', [
+    'label' => 'Texte de présentation',
+    'section' => 'section_mission',
+    'type' => 'textarea',
+  ]);
+
+  // Image 1
+  $wp_customize->add_setting('mission_image1');
+  $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'mission_image1', [
+    'label' => 'Image de gauche',
+    'section' => 'section_mission',
+    'settings' => 'mission_image1',
+  ]));
+
+  // Image 2
+  $wp_customize->add_setting('mission_image2');
+  $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'mission_image2', [
+    'label' => 'Image de droite',
+    'section' => 'section_mission',
+    'settings' => 'mission_image2',
+  ])); 
+}
+add_action('customize_register', 'themefrugi_section_mission');
+
 
 
 ?>

@@ -4,3 +4,80 @@ Author: Tiana RAKOTOMALALA
 Description: thème WordPress conçu pour l'entreprise Frugi
 Version: 1.0
 */
+:root{
+    --menu-color:#010449;
+    --h1-font-size: 2.5rem;
+    --h2-font-size: 2rem;
+    --paragraph-font-size: 1rem;
+    --txt-color: rgba(36, 40, 51, 0.8);
+    --font-family-poppins: 'Poppins', sans-serif;
+    --h1-letter-spacing: 0.05em;
+    --h1-font-size: 36px;
+    --h1-font-weight: 500;
+    --menu-font-size: 14px;
+    --menu-letter-spacing: 0.15em;
+    --bup-color: #D4BC64;
+    --pub-letter-spacing: 0.10em;  
+    --font-heading-scale: 1.0;
+}
+body{
+    margin: 0px !important;
+}
+
+/*style header */
+header{
+    border-top: solid 8px #DA1517;
+    border-bottom:solid 8px #46962B;
+}
+.menu{
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: space-around;
+}
+.main-menu{
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0;
+}
+.main-menu li{
+    list-style-type: none;
+}
+.main-menu li a{
+    text-decoration: none;
+    font-family: var(--font-family-poppins);
+    color: var(--menu-color);
+    font-size: var(--menu-font-size);
+    letter-spacing: var(--menu-letter-spacing);
+    font-weight: 600;
+    text-transform: uppercase;
+}
+nav{
+    width:55%; 
+}
+.contact-menu{
+    background-color: #DA1517;
+}
+
+.contact-menu a{
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    text-transform: uppercase;
+    font-weight:600 ;
+    font-family: var(--font-family-poppins);
+    border-radius: 50%;
+    padding: 0.5rem 2rem;
+}
+.carousel-inner{
+    height:100vh;
+}
+.carousel-item {
+    transition: transform 6s ease-in-out !important;
+  }
+  .object-fit-cover {
+    object-fit: cover;
+    object-position: center;
+  }

@@ -1,4 +1,17 @@
 <?php
+
+function themefrugi_enqueue_jquery() {
+  wp_enqueue_script('jquery');
+}
+add_action('wp_enqueue_scripts', 'themefrugi_enqueue_jquery');
+
+function themefrugi_enqueue_swiper() {
+  wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css');
+  wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(), null, true);
+}
+add_action('wp_enqueue_scripts', 'themefrugi_enqueue_swiper');
+
+
 function themefrugi_customize_register($wp_customize) {
 
 // Section Bannière
@@ -123,9 +136,40 @@ function themefrugi_section_mission($wp_customize) {
     'section' => 'section_mission',
     'settings' => 'mission_image2',
   ])); 
+
+  // Section gamme
+$wp_customize->add_section('section_gamme', [
+  'title' => 'Section Gamme',
+  'priority' => 50,
+]);
+
+// Titre
+$wp_customize->add_setting('gamme_titre', [
+  'default' => 'NOTRE GAMME : FABRICATION 100% FRUGI',
+  'transport' => 'refresh',
+]);
+$wp_customize->add_control('gamme_titre', [
+  'label' => 'Titre de la section gamme',
+  'section' => 'section_gamme',
+  'type' => 'text',
+]);
+
+// Texte
+$wp_customize->add_setting('gamme_texte', [
+  'default' => 'Texte de description de la gamme...',
+  'transport' => 'refresh',
+]);
+$wp_customize->add_control('gamme_texte', [
+  'label' => 'Texte de la section gamme',
+  'section' => 'section_gamme',
+  'type' => 'textarea',
+]);
+
+// Images du slider (5 par exemple)
+
+
 }
 add_action('customize_register', 'themefrugi_section_mission');
-
 
 
 ?>

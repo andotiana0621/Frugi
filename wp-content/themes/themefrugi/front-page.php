@@ -1,8 +1,8 @@
 <?php get_header(); ?>
 <section class="mission">
   <div class="mission-content">
-    <h2><?php echo get_theme_mod('mission_titre'); ?></h2>
-    <p><?php echo get_theme_mod('mission_texte'); ?></p>
+    <h2 class="frugi-h2"><?php echo get_theme_mod('mission_titre'); ?></h2>
+    <p class="frugi-description"><?php echo get_theme_mod('mission_texte'); ?></p>
     <a href="<?php echo esc_url(get_theme_mod('mission_bouton_lien')); ?>" class="mission-btn">
       <div class="btn-action">Notre Histoire >></div>
     </a>
@@ -14,8 +14,8 @@
 </section>
 <section class="gamme">
   <div class="gamme-description">
-    <h2><?php echo get_theme_mod('gamme_titre'); ?></h2>
-    <p><?php echo get_theme_mod('gamme_texte'); ?></p>
+    <h2 class="frugi-h2"><?php echo get_theme_mod('gamme_titre'); ?></h2>
+    <p class="frugi-description"><?php echo get_theme_mod('gamme_texte'); ?></p>
   </div>
   
   <div class="container-gamme">
@@ -89,6 +89,25 @@
 <a href="<?php echo esc_url(get_theme_mod('mission_bouton_lien')); ?>" class="mission-btn">
       <div class="btn-action">Explorer notre gamme >></div>
 </a>
+</section>
+<section class="chiffres">
+  <div class="chiffres-description">
+    <h2 class="frugi-h2" ><?php echo get_theme_mod('chiffres_titre'); ?></h2>
+    <p class="frugi-description"><?php echo get_theme_mod('chiffres_description'); ?></p>
+  </div>
+ 
+  <div class="chiffres-blocs" style="background-image: url('<?php echo esc_url(get_theme_mod('chiffres_background')); ?>');">
+  <div class="overlay"></div>
+    <?php for ($i = 1; $i <= 3; $i++) : ?>
+      
+      <div class="bloc">
+        <h3 class="counter" data-target="<?php echo esc_html(get_theme_mod("chiffres_valeur_$i")); ?>">0</h3>
+        <p><?php echo esc_html(get_theme_mod("chiffres_texte_$i")); ?></p>
+      </div>
+    
+    <?php endfor; ?>
+  </div>
+ 
 </section>
 
 <?php get_footer(); ?>

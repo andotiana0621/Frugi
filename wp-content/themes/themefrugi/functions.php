@@ -165,7 +165,64 @@ $wp_customize->add_control('gamme_texte', [
   'type' => 'textarea',
 ]);
 
-// Images du slider (5 par exemple)
+// section chfiffres
+
+$wp_customize->add_section('chiffres_section', [
+  'title' => 'Section Chiffres',
+  'priority' => 40,
+]);
+
+// Texte titre
+$wp_customize->add_setting('chiffres_titre', [
+  'default' => 'FRUGI EN QUELQUES CHIFFRES',
+]);
+$wp_customize->add_control('chiffres_titre', [
+  'label' => 'Titre de la section',
+  'section' => 'chiffres_section',
+  'type' => 'text',
+]);
+
+// Texte description
+$wp_customize->add_setting('chiffres_description', [
+  'default' => 'Texte de description...',
+]);
+$wp_customize->add_control('chiffres_description', [
+  'label' => 'Description',
+  'section' => 'chiffres_section',
+  'type' => 'textarea',
+]);
+
+// Boucle pour les 3 blocs
+for ($i = 1; $i <= 3; $i++) {
+
+  // Chiffre
+  $wp_customize->add_setting("chiffres_valeur_$i", [
+      'default' => '0',
+  ]);
+  $wp_customize->add_control("chiffres_valeur_$i", [
+      'label' => "Valeur $i",
+      'section' => 'chiffres_section',
+      'type' => 'text',
+  ]);
+
+  // Texte description
+  $wp_customize->add_setting("chiffres_texte_$i", [
+      'default' => 'Description...',
+  ]);
+  $wp_customize->add_control("chiffres_texte_$i", [
+      'label' => "Texte $i",
+      'section' => 'chiffres_section',
+      'type' => 'text',
+  ]);
+}
+
+// Image de fond (optionnelle)
+$wp_customize->add_setting('chiffres_background', []);
+$wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'chiffres_background', [
+  'label' => 'Image de fond',
+  'section' => 'chiffres_section',
+  'settings' => 'chiffres_background',
+]));
 
 
 }

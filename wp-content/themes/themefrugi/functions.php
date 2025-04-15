@@ -228,5 +228,69 @@ $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'chiffr
 }
 add_action('customize_register', 'themefrugi_section_mission');
 
+//ajout section engagement 
+function themefrugi_customizer_engagements($wp_customize) {
+  $wp_customize->add_section('engagements_section', [
+    'title' => 'Nos engagements',
+    'priority' => 50,
+  ]);
+
+  // Texte d’intro
+  $wp_customize->add_setting('engagements_intro', ['default' => '', 'transport' => 'refresh']);
+  $wp_customize->add_control('engagements_intro', [
+    'label' => 'Texte d’introduction',
+    'section' => 'engagements_section',
+    'type' => 'textarea',
+  ]);
+
+  // Ajouter 3 blocs
+  for ($i = 1; $i <= 3; $i++) {
+    // Icône
+    $wp_customize->add_setting("engagement_icon_$i");
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, "engagement_icon_$i", [
+      'label' => "Icône engagement $i",
+      'section' => 'engagements_section',
+      'settings' => "engagement_icon_$i",
+    ]));
+  
+    // Titre
+    $wp_customize->add_setting("engagement_title_$i", ['default' => '']);
+    $wp_customize->add_control("engagement_title_$i", [
+      'label' => "Titre engagement $i",
+      'section' => 'engagements_section',
+      'type' => 'text',
+    ]);
+    
+  
+    // Texte
+    $wp_customize->add_setting("engagement_text_$i", ['default' => '']);
+    $wp_customize->add_control("engagement_text_$i", [
+      'label' => "Texte engagement $i",
+      'section' => 'engagements_section',
+      'type' => 'textarea',
+    ]);
+  
+    // Image 1 (pour tous les engagements)
+    $wp_customize->add_setting("engagement_image_{$i}_1");
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, "engagement_image_{$i}_1", [
+      'label' => "Image engagement $i - 1",
+      'section' => 'engagements_section',
+      'settings' => "engagement_image_{$i}_1",
+    ]));
+  
+    // Image 2 (uniquement pour l'engagement 3)
+    if ($i == 3) {
+      $wp_customize->add_setting("engagement_image_{$i}_2");
+      $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, "engagement_image_{$i}_2", [
+        'label' => "Image engagement $i - 2",
+        'section' => 'engagements_section',
+        'settings' => "engagement_image_{$i}_2",
+      ]));
+    }
+  }
+  
+}
+add_action('customize_register', 'themefrugi_customizer_engagements');
+
 
 ?>

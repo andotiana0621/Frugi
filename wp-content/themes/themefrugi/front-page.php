@@ -110,4 +110,51 @@
  
 </section>
 
+<section class="engagements">
+  <div class="engagements-intro">
+    <p><?php echo esc_html(get_theme_mod('engagements_intro')); ?></p>
+  </div>
+
+  <div class="engagements-wrapper">
+    <!-- Colonne gauche (TEXTES) -->
+    <div class="engagements-left">
+      <?php for ($i = 1; $i <= 3; $i++) : ?>
+        <div class="engagement-text">
+          <div class="icone-title">
+            <?php if (get_theme_mod("engagement_icon_$i")) : ?>
+              <img class="engagement-icon" src="<?php echo esc_url(get_theme_mod("engagement_icon_$i")); ?>" alt="Icon <?php echo $i; ?>">
+            <?php endif; ?>
+            <div class="engagement-description">
+              <?php if (get_theme_mod("engagement_title_$i")) : ?>
+                <h3><?php echo esc_html(get_theme_mod("engagement_title_$i")); ?></h3>
+              <?php endif; ?>
+              <?php if (get_theme_mod("engagement_text_$i")) : ?>
+                <p><?php echo esc_html(get_theme_mod("engagement_text_$i")); ?></p>
+              <?php endif; ?>
+            </div>
+          </div>
+        </div>
+      <?php endfor; ?>
+    </div>
+
+    <!-- Colonne droite (IMAGES) -->
+    <div class="engagements-right">
+      <?php for ($i = 1; $i <= 2; $i++) : ?>
+        <?php if (get_theme_mod("engagement_image_{$i}_1")) : ?>
+          <img src="<?php echo esc_url(get_theme_mod("engagement_image_{$i}_1")); ?>" alt="Image engagement <?php echo $i; ?>">
+        <?php endif; ?>
+      <?php endfor; ?>
+
+      <?php if (get_theme_mod("engagement_image_3_1")) : ?>
+        <img src="<?php echo esc_url(get_theme_mod("engagement_image_3_1")); ?>" alt="Image engagement 3 - 1">
+      <?php endif; ?>
+      <?php if (get_theme_mod("engagement_image_3_2")) : ?>
+        <img src="<?php echo esc_url(get_theme_mod("engagement_image_3_2")); ?>" alt="Image engagement 3 - 2">
+      <?php endif; ?>
+    </div>
+  </div>
+</section>
+
+
+
 <?php get_footer(); ?>
